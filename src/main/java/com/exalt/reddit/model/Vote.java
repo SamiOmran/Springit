@@ -13,12 +13,7 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class Vote {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
 
-    @NonNull
-    private int vote;
-
-
+    @NonNull private int vote;
 }

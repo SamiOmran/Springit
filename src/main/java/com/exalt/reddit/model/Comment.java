@@ -14,14 +14,9 @@ import javax.persistence.ManyToOne;
 @NoArgsConstructor
 public class Comment extends Auditable {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    @Id @GeneratedValue private Long id;
 
-    @NonNull
-    private String body;
+    @NonNull private String body;
 
-    @ManyToOne
-    private Link link;
-
+    @ManyToOne private Link link;
 }
