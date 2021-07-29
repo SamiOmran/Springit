@@ -27,7 +27,6 @@ public class LinkController {
         this.linkRepository = linkRepository;
     }
 
-
     @GetMapping(path = "/")
     public String list(Model model) {
         model.addAttribute("links",linkRepository.findAll());
@@ -66,7 +65,6 @@ public class LinkController {
         }
 
     }
-
 
 //    /***
 //     * @return all Links in the linkRepository

@@ -50,7 +50,7 @@
                         <i class="fa fa-link" aria-hidden="true"></i> Submit Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../auth/profile.html">
+                    <a class="nav-link" th:href="@{/auth/profile}">
                         <i class="fa fa-user" aria-hidden="true"></i> Account</a>
                 </li>
                 <li class="nav-item">
@@ -60,11 +60,11 @@
 
                 <!-- if user is not signed in -->
                 <li class="nav-item">
-                    <a class="nav-link" href=../auth/login.html>
+                    <a class="nav-link" th:href="@{/auth/login}">
                         <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Sign In</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="../auth/register.html">
+                    <a class="nav-link" th:href="@{/auth/register}">
                         <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
                 </li>
             </ul>
@@ -83,7 +83,7 @@
 </div>
 
 <div class="container" th:fragment="content">
-    <p>This is a paragraph</p>
+    <p>HALA MADRID</p>
 </div>
 
 </body>
