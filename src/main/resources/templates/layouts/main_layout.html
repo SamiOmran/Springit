@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
 
 <head th:fragment="head(title)">
 
@@ -45,26 +45,26 @@
                 </li>
 
                 <!-- if user is signed in -->
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:href="@{/link/submit}">
                         <i class="fa fa-link" aria-hidden="true"></i> Submit Link</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:href="@{/auth/profile}">
                         <i class="fa fa-user" aria-hidden="true"></i> Account</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form method="POST" th:action="@{/logout}">
                         <button class="nav-link"><i class="fa fa-sign-out-alt" aria-hidden="true"></i>Sign out</button>
                     </form>
                 </li>
 
                 <!-- if user is not signed in -->
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{/auth/login}">
                         <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Sign In</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
                     <a class="nav-link" th:href="@{/auth/register}">
                         <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
                 </li>
