@@ -25,7 +25,7 @@
             </p>
             <p class="tagline ">submitted
                 <time th:title="${link.getCreatedDate()}" th:datetime="${link.getCreatedDate()}" class="live-timestamp" th:text="${link.getPrettyTime()}">Sami is the best</time>
-                <a href="/" class="author">sami</a>
+                <a href="/" class="author" th:text="${link.getCreatedBy()}">sami</a>
             </p>
             <p>
                 <a th:href="@{'/link/' + ${link.id} + '#comments' }" class="comments" th:text="|${link.getComments().size()} comments|"><i class="fas fa-comments"></i> 8 comments</a>
