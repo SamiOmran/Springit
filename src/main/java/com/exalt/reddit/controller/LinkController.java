@@ -2,8 +2,8 @@ package com.exalt.reddit.controller;
 
 import com.exalt.reddit.model.Comment;
 import com.exalt.reddit.model.Link;
-import com.exalt.reddit.repositories.CommentRepository;
-import com.exalt.reddit.repositories.LinkRepository;
+import com.exalt.reddit.service.CommentService;
+import com.exalt.reddit.service.LinkService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,26 +21,26 @@ import java.util.Optional;
 //@RequestMapping("/links")
 public class LinkController {
 
-    private LinkRepository linkRepository;
-    private CommentRepository commentRepository;
+    private LinkService linkService;
+    private CommentService commentService;
 
     private static final Logger logger = LoggerFactory.getLogger(LinkController.class);
 
-    public LinkController(LinkRepository linkRepository, CommentRepository commentRepository) {
-        this.linkRepository = linkRepository;
-        this.commentRepository = commentRepository;
+    public LinkController(LinkService linkService, CommentService commentService) {
+        this.linkService = linkService;
+        this.commentService = commentService;
     }
 
 
     @GetMapping(path = "/")
     public String list(Model model) {
-        model.addAttribute("links",linkRepository.findAll());
+        model.addAttribute("links",linkService.findAll());
         return "link/list";
     }
 
     @GetMapping(path = "/link/{id}")
     public String read(@PathVariable Long id, Model model) {
-        Optional<Link> link = linkRepository.findById(id);
+        Optional<Link> link = linkService.findById(id);
 
         if (link.isPresent()) {
             Link currentLink = link.get();
@@ -67,7 +67,7 @@ public class LinkController {
             model.addAttribute("link",link);
             return "link/submit";
         } else {
-            linkRepository.save(link);
+            linkService.save(link);
             logger.info("Success saving new link");
             redirectAttributes.addAttribute("id",link.getId());//.addFlashAttribute("success",true);
             return "redirect:/link/{id}";
@@ -80,7 +80,7 @@ public class LinkController {
         if (bindingResult.hasErrors()) {
             logger.info("There is a problem adding a comment");
         } else {
-            commentRepository.save(comment);
+            commentService.save(comment);
             logger.info("Success adding a comment");
         }
         return "redirect:/link/" + comment.getLink().getId();
