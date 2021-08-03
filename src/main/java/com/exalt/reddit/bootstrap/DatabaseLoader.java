@@ -1,5 +1,6 @@
 package com.exalt.reddit.bootstrap;
 
+import com.exalt.reddit.model.Comment;
 import com.exalt.reddit.model.Link;
 import com.exalt.reddit.model.Role;
 import com.exalt.reddit.model.User;
@@ -37,14 +38,21 @@ public class DatabaseLoader implements CommandLineRunner {
         addUsersRoles();
 
         //   Adding links to the Database
-        Map<String,String> links = new HashMap<>();
+        Map<String, String> links = new HashMap<>();
         links.put("first link goes to facebook", "https://facebook.com");
         links.put("second link goes to twitter", "https://twitter.com");
 
-        links.forEach((title, url) -> linkRepository.save(new Link(title, url)));
+        links.forEach((title, url) -> {
+            Link link = new Link(title, url);
+            linkRepository.save(link);
 
-        int linkCount = (int) linkRepository.count();
-        System.out.println("Number of links in database is " + linkCount);
+            Comment c1 = new Comment("This link is good", link);
+            commentRepository.save(c1);
+            link.addComment(c1);
+
+            int linkCount = (int) linkRepository.count();
+            System.out.println("Number of links in database is " + linkCount);
+        });
     }
 
     private void addUsersRoles() {
@@ -71,4 +79,5 @@ public class DatabaseLoader implements CommandLineRunner {
         System.out.println(numberOfUsers + " users have just inserted to the database");
 
     }
+
 }

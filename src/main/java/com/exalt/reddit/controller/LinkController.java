@@ -1,6 +1,8 @@
 package com.exalt.reddit.controller;
 
+import com.exalt.reddit.model.Comment;
 import com.exalt.reddit.model.Link;
+import com.exalt.reddit.repositories.CommentRepository;
 import com.exalt.reddit.repositories.LinkRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,12 +22,15 @@ import java.util.Optional;
 public class LinkController {
 
     private LinkRepository linkRepository;
+    private CommentRepository commentRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(LinkController.class);
 
-    public LinkController(LinkRepository linkRepository) {
+    public LinkController(LinkRepository linkRepository, CommentRepository commentRepository) {
         this.linkRepository = linkRepository;
+        this.commentRepository = commentRepository;
     }
+
 
     @GetMapping(path = "/")
     public String list(Model model) {
@@ -38,6 +43,10 @@ public class LinkController {
         Optional<Link> link = linkRepository.findById(id);
 
         if (link.isPresent()) {
+            Link currentLink = link.get();
+            Comment comment = new Comment();
+            comment.setLink(currentLink);
+            model.addAttribute("comment",comment);
             model.addAttribute("link",link.get());
             return "link/view";
         } else {
@@ -64,6 +73,17 @@ public class LinkController {
             return "redirect:/link/{id}";
         }
 
+    }
+
+    @PostMapping(path = "/link/comments")
+    public String addComment(@Valid Comment comment, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            logger.info("There is a problem adding a comment");
+        } else {
+            commentRepository.save(comment);
+            logger.info("Success adding a comment");
+        }
+        return "redirect:/link/" + comment.getLink().getId();
     }
 
 //    /***
