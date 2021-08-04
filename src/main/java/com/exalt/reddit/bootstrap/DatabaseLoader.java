@@ -23,6 +23,7 @@ public class DatabaseLoader implements CommandLineRunner {
     private final CommentRepository commentRepository;
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
+    private Map<String, User> users = new HashMap<>();
 
     public DatabaseLoader(LinkRepository linkRepository, CommentRepository commentRepository, RoleRepository roleRepository, UserRepository userRepository) {
         this.linkRepository = linkRepository;
@@ -33,27 +34,39 @@ public class DatabaseLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        //Adding users with roles to Database
-
         addUsersRoles();
 
         //   Adding links to the Database
         Map<String, String> links = new HashMap<>();
         links.put("first link goes to facebook", "https://facebook.com");
         links.put("second link goes to twitter", "https://twitter.com");
+        links.put("Computer Science Apprenticeship Program","https://cap.ps");
 
         links.forEach((title, url) -> {
+            User user1 = users.get("sami@gmail.com");
+            User user2 = users.get("master@gmail.com");
             Link link = new Link(title, url);
-            linkRepository.save(link);
 
-            Comment c1 = new Comment("This link is good", link);
-            commentRepository.save(c1);
-            link.addComment(c1);
+            if (title.startsWith("first")) {
+                link.setUser(user1);
+            } else {
+                link.setUser(user2);
+            }
+
+            linkRepository.save(link);
+            
+            Comment[] comments = {new Comment("Nice major") ,new Comment("kfmfdkmbkbmgsbgsfbgfbgfs"), new Comment("12345678965") };
+            for (Comment comment:comments) {
+                comment.setLink(link);
+                commentRepository.save(comment);
+                link.addComment(comment);
+            }
 
             int linkCount = (int) linkRepository.count();
             System.out.println("Number of links in database is " + linkCount);
         });
     }
+
 
     private void addUsersRoles() {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -61,19 +74,22 @@ public class DatabaseLoader implements CommandLineRunner {
 
         Role userRole = new Role("ROLE_USER");
         roleRepository.save(userRole);
-        User user = new User("sami@gmail.com", secret, true);
+        User user = new User("sami@gmail.com", secret, true, "Sami", "Imran","sane");
         user.addRole(userRole);
         userRepository.save(user);
+        users.put("sami@gmail.com",user);
 
         Role adminRole = new Role("ROLE_ADMIN");
         roleRepository.save(adminRole);
-        User admin = new User("admin@gmail.com", secret, true);
+        User admin = new User("admin@gmail.com", secret, true, "admin", "admin", "addddd");
         admin.addRole(adminRole);
         userRepository.save(admin);
+        users.put("admin@gmail.com",admin);
 
-        User master = new User("master@gmail.com", secret, true);
+        User master = new User("master@gmail.com", secret, true, "master", "master", "msmssmmddmd");
         master.addRoles(new HashSet<>(Arrays.asList(userRole, adminRole)));
         userRepository.save(master);
+        users.put("master@gmail.com", master);
 
         Long numberOfUsers = userRepository.count();
         System.out.println(numberOfUsers + " users have just inserted to the database");
