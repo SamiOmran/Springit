@@ -54,13 +54,13 @@ public class LinkController {
         }
     }
 
-    @GetMapping(path = "/link/submit")
+    @GetMapping(path = "/submit")
     public String newLinkForm(Model model) {
         model.addAttribute("link",new Link());
         return "link/submit";
     }
 
-    @PostMapping(path = "/link/submit")
+    @PostMapping(path = "/submit")
     public String createLink(@Valid Link link, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()){
             logger.info("An error occurred while creating new link");
@@ -74,7 +74,7 @@ public class LinkController {
         }
     }
 
-    @PostMapping(path = "/link/comments")
+    @PostMapping(path = "/comments")
     public String addComment(@Valid Comment comment, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             logger.info("There is a problem adding a comment");

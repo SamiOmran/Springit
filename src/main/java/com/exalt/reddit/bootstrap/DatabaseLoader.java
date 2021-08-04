@@ -61,12 +61,11 @@ public class DatabaseLoader implements CommandLineRunner {
                 commentRepository.save(comment);
                 link.addComment(comment);
             }
-
-            int linkCount = (int) linkRepository.count();
-            System.out.println("Number of links in database is " + linkCount);
         });
-    }
 
+        int linkCount = (int) linkRepository.count();
+        System.out.println("Number of links in database is " + linkCount);
+    }
 
     private void addUsersRoles() {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -74,26 +73,25 @@ public class DatabaseLoader implements CommandLineRunner {
 
         Role userRole = new Role("ROLE_USER");
         roleRepository.save(userRole);
-        User user = new User("sami@gmail.com", secret, true, "Sami", "Imran","sane");
+        User user = new User("sami@gmail.com", secret, secret, true, "Sami", "Imran","sane");
         user.addRole(userRole);
         userRepository.save(user);
         users.put("sami@gmail.com",user);
 
         Role adminRole = new Role("ROLE_ADMIN");
         roleRepository.save(adminRole);
-        User admin = new User("admin@gmail.com", secret, true, "admin", "admin", "addddd");
+        User admin = new User("admin@gmail.com", secret, secret, true, "admin", "admin", "addddd");
         admin.addRole(adminRole);
         userRepository.save(admin);
         users.put("admin@gmail.com",admin);
 
-        User master = new User("master@gmail.com", secret, true, "master", "master", "msmssmmddmd");
+        User master = new User("master@gmail.com", secret, secret, true, "master", "master","dsdvddsvsv");
         master.addRoles(new HashSet<>(Arrays.asList(userRole, adminRole)));
         userRepository.save(master);
         users.put("master@gmail.com", master);
 
         Long numberOfUsers = userRepository.count();
         System.out.println(numberOfUsers + " users have just inserted to the database");
-
     }
 
 }

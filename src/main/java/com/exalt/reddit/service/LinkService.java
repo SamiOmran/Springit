@@ -24,7 +24,7 @@ public class LinkService {
         return linkRepository.findById(id);
     }
 
-    public void save(Link link) {
-        linkRepository.save(link);
+    public Link save(Link link) {
+        return linkRepository.save(link);
     }
 }

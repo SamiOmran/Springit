@@ -25,7 +25,7 @@ public class VoteService {
         return voteRepository.findById(id);
     }
 
-    public void save(Vote vote) {
-        voteRepository.save(vote);
+    public Vote save(Vote vote) {
+        return voteRepository.save(vote);
     }
 }

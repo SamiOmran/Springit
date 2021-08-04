@@ -1,5 +1,6 @@
 package com.exalt.reddit.model;
 
+import com.exalt.reddit.model.validator.PasswordsMatch;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +17,7 @@ import java.util.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@PasswordsMatch
 public class User implements UserDetails {
     @GeneratedValue @Id
     private Long id;
@@ -28,16 +30,21 @@ public class User implements UserDetails {
     @Column(length = 100)
     private String password;
 
+    @Transient
+    @NonNull
+    @NotEmpty(message = "Please confirm the password")
+    private String confirmPassword;
+
     @NonNull
     @Column(nullable = false)
     private boolean enabled;
 
     @NonNull
-    @NotEmpty(message = "Please enter a first name")
+    @NotEmpty(message = "Please enter your first name")
     private String firstName;
 
     @NonNull
-    @NotEmpty(message = "Please enter a last name")
+    @NotEmpty(message = "Please enter your last name")
     private String lastName;
 
     @Transient
