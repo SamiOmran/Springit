@@ -48,7 +48,7 @@
             <div class="row addcomment" sec:authorize="hasRole('ROLE_USER')">
                 <div class="col-1">&nbsp;</div>
                 <div class="col-11">
-                    <form id="formAddComment" method="POST" th:action="@{/comments}" th:object="${comment}">
+                    <form id="formAddComment" method="POST" th:action="@{/link/comments}" th:object="${comment}">
                         <input type="hidden" th:field="*{link}">
                     <div class="form-group">
                         <textarea class="form-control" id="comment" rows="3" th:field="*{body}"></textarea>

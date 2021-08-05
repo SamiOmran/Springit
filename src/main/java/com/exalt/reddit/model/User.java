@@ -64,6 +64,8 @@ public class User implements UserDetails {
     )
     private Set<Role> roles = new HashSet<>();
 
+    private String activationCode;
+
     public String getFullName() {
         return firstName + " " + lastName;
     }

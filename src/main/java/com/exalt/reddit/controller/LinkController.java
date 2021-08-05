@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-//@RestController
-//@RequestMapping("/links")
 public class LinkController {
 
     private LinkService linkService;
@@ -30,7 +28,6 @@ public class LinkController {
         this.linkService = linkService;
         this.commentService = commentService;
     }
-
 
     @GetMapping(path = "/")
     public String list(Model model) {
@@ -48,6 +45,8 @@ public class LinkController {
             comment.setLink(currentLink);
             model.addAttribute("comment",comment);
             model.addAttribute("link",link.get());
+            logger.info("please work!!");
+            logger.info(currentLink.getUser().getAlias());
             return "link/view";
         } else {
             return "redirect:/";
@@ -74,7 +73,7 @@ public class LinkController {
         }
     }
 
-    @PostMapping(path = "/comments")
+    @PostMapping(path = "/link/comments")
     public String addComment(@Valid Comment comment, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             logger.info("There is a problem adding a comment");
