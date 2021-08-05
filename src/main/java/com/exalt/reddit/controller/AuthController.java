@@ -2,16 +2,19 @@ package com.exalt.reddit.controller;
 
 import com.exalt.reddit.model.User;
 import com.exalt.reddit.service.UserService;
+import jdk.nashorn.internal.runtime.options.Option;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class AuthController {
@@ -55,5 +58,20 @@ public class AuthController {
             logger.info("Success registering new user");
             return "redirect:/register";
         }
+    }
+
+    @GetMapping(path = "/activate/{email}/{activationCode}")
+    public String activate(@PathVariable String email, @PathVariable String activationCode) {
+        Optional<User> optionalUser = userService.findByEmailAndActivationCode(email, activationCode);
+
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setEnabled(true);
+            user.setConfirmPassword(user.getPassword());
+            userService.save(user);
+            userService.sendWelcomeEmail(user);
+            return "auth/activated";
+        }
+        return "redirect:/";
     }
 }

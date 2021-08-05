@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import javax.transaction.Transactional;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -44,14 +46,6 @@ public class UserService {
         return user;
     }
 
-    private void sendActivationEmail(User user) {
-        mailService.sendActivationEmail(user);
-    }
-
-    private void sendWelcomeEmail(User user) {
-        mailService.sendWelcomeEmail(user);
-    }
-
     public User save(User user) {
         return userRepository.save(user);
     }
@@ -62,5 +56,17 @@ public class UserService {
             logger.info("saving user " + user.getUsername());
             userRepository.save(user);
         }
+    }
+
+    private void sendActivationEmail(User user) {
+        mailService.sendActivationEmail(user);
+    }
+
+    public void sendWelcomeEmail(User user) {
+        mailService.sendWelcomeEmail(user);
+    }
+
+    public Optional<User> findByEmailAndActivationCode(String email, String activationCode) {
+        return userRepository.findByEmailAndActivationCode(email, activationCode);
     }
 }
