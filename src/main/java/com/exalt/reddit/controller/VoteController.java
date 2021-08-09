@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-//@RequiredArgsConstructor
 public class VoteController {
 
     private VoteService voteService;
@@ -44,6 +43,11 @@ public class VoteController {
         } else {
             return voteCount;
         }
+    }
+
+    @GetMapping(path = "/vote/latestvote")
+    public String latestVote() {
+        return voteService.latestVote();
     }
 
 }

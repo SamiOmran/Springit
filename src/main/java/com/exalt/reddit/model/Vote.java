@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 @Setter
 @Getter
 @RequiredArgsConstructor
-public class Vote extends Auditable{
+public class Vote extends Auditable {
 
     @Id @GeneratedValue private Long id;
 
