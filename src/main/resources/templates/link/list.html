@@ -21,7 +21,7 @@
                 <a class="title " th:href="@{'/link/' + ${link.id}}" th:text="${link.title}">
                     What's new in Spring Boot 2?
                 </a>
-                <span class="domain">(<a th:href="${link.url}" th:text="${link.getDomainName()}">therealdanvega.com</a>)</span>
+                <span class="domain">(<a th:href="${link.url}" th:text="${link.getDomainName()}">what!!!</a>)</span>
             </p>
             <p class="tagline ">submitted
                 <time th:title="${link.getCreatedDate()}" th:datetime="${link.getCreatedDate()}" class="live-timestamp" th:text="${link.getPrettyTime()}">Sami is the best</time>
@@ -33,9 +33,6 @@
             </p>
         </div>
     </div>
-
-    <!-- link comments -->
-
 </div>
 <script sec:authorize="isFullyAuthenticated()">
     const allVotes = document.querySelectorAll(".upvote, .downvote");

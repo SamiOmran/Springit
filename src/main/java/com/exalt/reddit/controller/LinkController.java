@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -45,8 +44,7 @@ public class LinkController {
             comment.setLink(currentLink);
             model.addAttribute("comment",comment);
             model.addAttribute("link",link.get());
-            logger.info("please work!!");
-            logger.info(currentLink.getUser().getAlias());
+
             return "link/view";
         } else {
             return "redirect:/";
@@ -66,9 +64,12 @@ public class LinkController {
             model.addAttribute("link",link);
             return "link/submit";
         } else {
-            linkService.save(link);
+            link = linkService.save(link);
             logger.info("Success saving new link");
-            redirectAttributes.addAttribute("id",link.getId());//.addFlashAttribute("success",true);
+            redirectAttributes
+                    .addAttribute("id",link.getId())
+                    .addFlashAttribute("success",true);
+
             return "redirect:/link/{id}";
         }
     }
@@ -83,49 +84,5 @@ public class LinkController {
         }
         return "redirect:/link/" + comment.getLink().getId();
     }
-
-//    /***
-//     * @return all Links in the linkRepository
-//     */
-//    @GetMapping(path = "/")
-//    public List<Link> getLinks() {
-//        return linkRepository.findAll();
-//    }
-//
-//    /**
-//     * create new link in the linkRepository
-//     * @param link the new link to be added
-//     */
-//    @PostMapping(path = "/create")
-//    public void create(@ModelAttribute Link link) {
-//        linkRepository.save(link);
-//    }
-//
-//    /**
-//     * @param id the PathVariable would be in the RequestMapping
-//     * @return the link has the same id
-//     */
-//    @GetMapping(path = "{id}")
-//    public Optional<Link> read(@PathVariable Long id) {
-//        return linkRepository.findById(id);
-//    }
-//
-//    /**
-//     * @param id the PathVariable would be in the RequestMapping
-//     * @param link the updated link
-//     */
-//    @PutMapping(path = "/{id}")
-//    public void update(@PathVariable Long id, @ModelAttribute Link link) {
-//        linkRepository.save(link);
-//    }
-//
-//    /**
-//     * @param id the PathVariable would be in the RequestMapping to delete
-//     *           the link has this id
-//     */
-//    @DeleteMapping(path = "/{id}")
-//    public void delete(@PathVariable Long id) {
-//        linkRepository.deleteById(id);
-//    }
 
 }
