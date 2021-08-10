@@ -1,0 +1,36 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <title>Upload-Download</title>
+</head>
+<body>
+
+    <div style="display: flex; flex-direction: column">
+      <div>
+        <input type="file" id="fileupload" name="fileupload"/>
+        <button id="upload-btn" onclick="uploadFile()">Upload file</button>
+      </div>
+
+    </div>
+
+
+  <script>
+    async function uploadFile() {
+      let formData = new FormData();
+      formData.append("file",fileupload.files[0]);
+
+      let response = await fetch('/index/upload', {
+        method: "POST",
+        body: formData
+      });
+
+      if (response.status === 200) {
+        alert("Success")
+      } else {
+        alert("Error, " + response.status)
+      }
+    }
+
+  </script>
+
+</body>
+</html>
