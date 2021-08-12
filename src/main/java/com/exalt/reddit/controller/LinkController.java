@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Controller
@@ -83,6 +84,21 @@ public class LinkController {
             logger.info("Success adding a comment");
         }
         return "redirect:/link/" + comment.getLink().getId();
+    }
+
+    /***
+     *
+     * learning about @RequestParam
+     */
+    @GetMapping(path = "/link")
+    @ResponseBody
+    public String getLinkTitleById(@RequestParam Long id) {
+        try {
+            String title = linkService.findById(id).get().getTitle();
+            return title;
+        } catch (NoSuchElementException e) {
+            return "Not found this link";
+        }
     }
 
 }

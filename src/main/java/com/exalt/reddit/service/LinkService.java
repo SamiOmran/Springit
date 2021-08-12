@@ -27,4 +27,5 @@ public class LinkService {
     public Link save(Link link) {
         return linkRepository.save(link);
     }
+
 }
