@@ -5,9 +5,9 @@
     <body>
 
         <div style="display: flex; flex-direction: column">
-          <div>
-            <input type="file" id="fileupload" name="fileupload"/>
-            <button id="upload-btn" onclick="uploadFile()">Upload file</button>
+            <div>
+                <input type="file" id="fileupload" name="fileupload"/>
+                <button id="upload-btn" onclick="uploadFile()">Upload file</button>
           </div>
 
             <div>
@@ -19,25 +19,19 @@
         </div>
 
       <script>
-          async function uploadFile() {
+          function uploadFile() {
               let formData = new FormData();
               formData.append("file", fileupload.files[0]);
 
-              let response = await fetch('/index/upload', {
+              fetch('/index/upload', {
                 method: "POST",
                 body: formData
               });
-
-              if (response.status === 200) {
-                alert("Success uploading file")
-              } else {
-                alert("Error, " + response.status)
-              }
           }
 
           function downloadFile() {
               const fileName = document.forms['download']['fileName'].files[0].name;
-              let response = fetch(`/index/download/${fileName}`, {
+              fetch(`/index/download/${fileName}`, {
                   method: "GET"
               });
           }

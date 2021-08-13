@@ -1,12 +1,9 @@
 package com.exalt.reddit.service;
 
-import com.exalt.reddit.model.Link;
 import com.exalt.reddit.model.Vote;
 import com.exalt.reddit.repositories.VoteRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +40,7 @@ public class VoteService {
 //
 //            return "Latest vote was on this linkId: " + linkId + ", and the vote count is: " + voteCount;
 //        }
-//        return "Could not found";
+//       mustafakassaf@gmail.com return "Could not found";
 //    }
 
     public String latestVote() {

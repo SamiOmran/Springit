@@ -40,7 +40,7 @@ public class DatabaseLoader implements CommandLineRunner {
         Map<String, String> links = new HashMap<>();
         links.put("first link goes to facebook", "https://facebook.com");
         links.put("second link goes to twitter", "https://twitter.com");
-        links.put("Computer Science Apprenticeship Program","https://cap.ps");
+        links.put("Student at Najah university use Zajel","https://zajel.najah.edu");
 
         links.forEach((title, url) -> {
             User user1 = users.get("sami@gmail.com");
@@ -55,16 +55,16 @@ public class DatabaseLoader implements CommandLineRunner {
 
             linkRepository.save(link);
             
-            Comment[] comments = {new Comment("Nice major") ,new Comment("kfmfdkmbkbmgsbgsfbgfbgfs"), new Comment("12345678965") };
-            for (Comment comment:comments) {
-                comment.setLink(link);
-                commentRepository.save(comment);
-                link.addComment(comment);
-            }
+//            Comment[] comments = {new Comment("Nice major") ,new Comment("kfmfdkmbkbmgsbgsfbgfbgfs"), new Comment("12345678965") };
+//            for (Comment comment:comments) {
+//                comment.setLink(link);
+//                commentRepository.save(comment);
+//                link.addComment(comment);
+//            }
         });
 
         int linkCount = (int) linkRepository.count();
-        System.out.println("Number of links in database is " + linkCount);
+        System.out.println("Number of links posted " + linkCount);
     }
 
     private void addUsersRoles() {
@@ -91,7 +91,7 @@ public class DatabaseLoader implements CommandLineRunner {
         users.put("master@gmail.com", master);
 
         Long numberOfUsers = userRepository.count();
-        System.out.println(numberOfUsers + " users have just inserted to the database");
+        System.out.println(numberOfUsers + " users have just inserted in the system");
     }
 
 }
