@@ -24,7 +24,7 @@
                 <span class="domain">(<a th:href="${link.url}" th:text="${link.getDomainName()}">what!!!</a>)</span>
             </p>
             <p class="tagline ">submitted
-                <time th:title="${link.getCreatedDate()}" th:datetime="${link.getCreatedDate()}" class="live-timestamp" th:text="${link.getPrettyTime()}">Sami is the best</time>
+                <time th:title="${link.getCreatedDate()}" th:datetime="${link.getCreatedDate()}" class="live-timestamp" th:text="${link.getPrettyTime()}">Sami is the best</time>by
                 <a th:href="@{'/u/' + ${link.getUser().getAlias()} }" class="author" th:text="${link.getUser().getAlias()}">sami</a>
             </p>
             <p>

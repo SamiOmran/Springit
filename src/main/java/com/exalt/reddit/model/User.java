@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @RequiredArgsConstructor
@@ -77,15 +78,9 @@ public class User implements UserDetails {
     public void addRoles(Set<Role> roles) {
         roles.forEach(this::addRole);
     }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-
-        for (Role role: roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-        return authorities;
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
     @Override
@@ -99,12 +94,12 @@ public class User implements UserDetails {
     }
 
     @Override
-    public boolean isCredentialsNonExpired() {
+    public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
+    public boolean isCredentialsNonExpired() {
         return true;
     }
 }

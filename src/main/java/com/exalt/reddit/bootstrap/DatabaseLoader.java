@@ -37,34 +37,34 @@ public class DatabaseLoader implements CommandLineRunner {
         addUsersRoles();
 
         //   Adding links to the Database
-        Map<String, String> links = new HashMap<>();
-        links.put("first link goes to facebook", "https://facebook.com");
-        links.put("second link goes to twitter", "https://twitter.com");
-        links.put("Computer Science Apprenticeship Program","https://cap.ps");
-
-        links.forEach((title, url) -> {
-            User user1 = users.get("sami@gmail.com");
-            User user2 = users.get("master@gmail.com");
-            Link link = new Link(title, url);
-
-            if (title.startsWith("first")) {
-                link.setUser(user1);
-            } else {
-                link.setUser(user2);
-            }
-
-            linkRepository.save(link);
-            
-            Comment[] comments = {new Comment("Nice major") ,new Comment("kfmfdkmbkbmgsbgsfbgfbgfs"), new Comment("12345678965") };
-            for (Comment comment:comments) {
-                comment.setLink(link);
-                commentRepository.save(comment);
-                link.addComment(comment);
-            }
-        });
-
-        int linkCount = (int) linkRepository.count();
-        System.out.println("Number of links in database is " + linkCount);
+//        Map<String,String> links = new HashMap<>();
+//        links.put("Title 1", "https://www.youtube.com/watch?v=23ruEfLScnM");
+//        links.put("Title 2", "https://www.youtube.com/watch?v=23ruEfLScnM");
+//        links.put("Title 3", "https://www.youtube.com/watch?v=23ruEfLScnM");
+//
+//        links.forEach((title, url) -> {
+//            User user1 = users.get("sami@gmail.com");
+//            User user2 = users.get("master@gmail.com");
+//            Link link = new Link(title, url);
+//
+//            if (title.startsWith("first")) {
+//                link.setUser(user1);
+//            } else {
+//                link.setUser(user2);
+//            }
+//
+//            linkRepository.save(link);
+//
+//            Comment[] comments = {new Comment("Nice major") ,new Comment("kfmfdkmbkbmgsbgsfbgfbgfs"), new Comment("12345678965") };
+//            for (Comment comment:comments) {
+//                comment.setLink(link);
+//                commentRepository.save(comment);
+//                link.addComment(comment);
+//            }
+//        });
+//
+//        int linkCount = (int) linkRepository.count();
+//        System.out.println("Number of links posted " + linkCount);
     }
 
     private void addUsersRoles() {
@@ -91,7 +91,7 @@ public class DatabaseLoader implements CommandLineRunner {
         users.put("master@gmail.com", master);
 
         Long numberOfUsers = userRepository.count();
-        System.out.println(numberOfUsers + " users have just inserted to the database");
+        System.out.println(numberOfUsers + " users have just inserted in the system");
     }
 
 }

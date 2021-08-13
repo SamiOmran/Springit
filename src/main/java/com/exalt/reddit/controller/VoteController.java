@@ -2,11 +2,8 @@ package com.exalt.reddit.controller;
 
 import com.exalt.reddit.model.Link;
 import com.exalt.reddit.model.Vote;
-import com.exalt.reddit.repositories.LinkRepository;
-import com.exalt.reddit.repositories.VoteRepository;
 import com.exalt.reddit.service.LinkService;
 import com.exalt.reddit.service.VoteService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

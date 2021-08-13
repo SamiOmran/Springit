@@ -2,17 +2,15 @@ package com.exalt.reddit;
 import org.ocpsoft.prettytime.PrettyTime;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 @SpringBootApplication
-@ConfigurationPropertiesScan
-//@EnableConfigurationProperties(StorageProperties.class)
-
+@EnableTransactionManagement
 public class SpringitApplication {
 
     public static void main(String[] args) {
-        System.out.println("Welcome!");
         SpringApplication.run(SpringitApplication.class, args);
     }
 
@@ -21,6 +19,10 @@ public class SpringitApplication {
         return new PrettyTime();
     }
 
+    @Bean
+    public SpringSecurityDialect securityDialect() {
+        return new SpringSecurityDialect();
+    }
 }
 
 

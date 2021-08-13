@@ -4,8 +4,6 @@ import com.exalt.reddit.service.BeanUtil;
 import lombok.*;
 import org.hibernate.validator.constraints.URL;
 import org.ocpsoft.prettytime.PrettyTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -21,6 +19,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class Link extends Auditable {
 
     @Id
@@ -47,11 +46,10 @@ public class Link extends Auditable {
 
     private int voteCount;
 
-    public Link(@NonNull String title, @NonNull String url) {
-        this.title = title;
-        this.url = url;
-
-    }
+//    public Link(String title, String url) {
+//        this.title = title;
+//        this.url = url;
+//    }
 
     public void addComment(Comment comment) {
         if (comments == null) {

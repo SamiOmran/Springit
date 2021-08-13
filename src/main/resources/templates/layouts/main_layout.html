@@ -1,28 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head(title)">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title th:text="${title}">Springit - Spring Boot Reddit Clone</title>
-
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" th:href="@{/libs/bootstrap/css/bootstrap.min.css}" >
-
+    <link rel="stylesheet" th:href="@{/libs/bootstrap/css/bootstrap.min.css}"/>
     <!-- Custom styles for this template -->
-    <link th:href="@{/css/springit.css}" rel="stylesheet">
-
+    <link rel="stylesheet" th:href="@{/css/springit.css}">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald|Roboto" >
     <!-- Font Awesome (for icons) -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
-
 <body>
 
 <!-- Navigation -->
@@ -36,15 +28,6 @@
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" >
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/index}">
-                        <i class="fas fa-home" aria-hidden="true"></i> Files
-                    </a>
-                </li>
-
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
@@ -55,16 +38,16 @@
 
                 <!-- if user is signed in -->
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" th:href="@{/submit}">
+                    <a class="nav-link" th:href="@{/link/submit}">
                         <i class="fa fa-link" aria-hidden="true"></i> Submit Link</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <a class="nav-link" th:href="@{/profile}">
                         <i class="fa fa-user" aria-hidden="true"></i> Account</a>
                 </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <form method="POST" th:action="@{/logout}">
-                        <button class="nav-link"><i class="fa fa-sign-out-alt" aria-hidden="true"></i>Sign out</button>
+                <li class="nav-item">
+                    <form method="POST" th:action="@{/logout}" sec:authorize="isAuthenticated()">
+                        <button class="nav-link"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Sign Out</button>
                     </form>
                 </li>
 
@@ -85,7 +68,7 @@
 <div class="jumbotron jumbotron-fluid" th:fragment="jumbotron">
     <div class="container" align="center">
         <h2 class="display-4">Spring Boot Reddit Clone</h2>
-        <p class="lead">This is a reddit clone built using <a href="#">Spring Boot 2</a>, <a href="#"></a>Spring Framework 5 & so many other great projects! If you would like to learn how to build this
+        <p class="lead">This is a reddit clone built using <a href="#">Spring Boot 2</a>, <a href="#"></a>Spring Framework 5</a> & so many other great projects! If you would like to learn how to build this
             application you can check out my course, <a href="#">Getting Started with Spring Boot 2</a>.</p>
         <a href="http://www.github.com/cfaddict/springit" class="btn btn-success" target="_blank"><i class="fab fa-github"></i>  Github Repo</a>
         <a href="https://therealdanvega.teachable.com/p/spring-boot-2" class="btn btn-success" target="_blank"><i class="fas fa-graduation-cap"></i> Spring Boot 2 Course</a>
@@ -93,9 +76,8 @@
 </div>
 
 <div class="container" th:fragment="content">
-    <p>HALA MADRID</p>
+    <p>This is your main content</p>
 </div>
 
 </body>
-
 </html>

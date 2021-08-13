@@ -2,6 +2,7 @@ package com.exalt.reddit.service;
 
 import com.exalt.reddit.model.User;
 import com.exalt.reddit.repositories.UserRepository;
+import com.exalt.reddit.security.UserDetailsServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -56,6 +57,14 @@ public class UserService {
             userRepository.save(user);
         }
     }
+
+    public User getUserByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+           return user.get();
+        }
+        return null;
+     }
 
     private void sendActivationEmail(User user) {
         mailService.sendActivationEmail(user);
