@@ -1,0 +1,215 @@
+[33mcommit c4de103175d9ee70891f25223751002b3bfec360[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: f0dc352 b8bbaa7
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Sun Aug 15 12:10:30 2021 +0300
+
+    Merge remote-tracking branch 'origin/master'
+    
+    # Conflicts:
+    #       src/main/java/com/exalt/reddit/bootstrap/DatabaseLoader.java
+    #       src/main/resources/templates/layouts/main_layout.html
+    #       src/main/resources/templates/link/view.html
+
+[33mcommit f0dc352d6eccaeae219a79cc26de83c89e1f467a[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Fri Aug 13 11:43:14 2021 +0300
+
+    make the submit work, turn DatabaseLoader off
+
+[33mcommit b8bbaa7374d4c75fb1784551e89708d5e7b99ce9[m[33m ([m[1;31morigin/other-APIs[m[33m, [m[1;32mother-APIs[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Fri Aug 13 11:43:14 2021 +0300
+
+    unrelated edits
+
+[33mcommit 5c5a4990e5df4d9551e30e1bd29385dfd453a8ca[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Fri Aug 13 11:32:51 2021 +0300
+
+    make the upload API return json object
+
+[33mcommit c84c7eaaee87d66bb8b459651ea4be0fdc3feeaf[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Aug 12 12:40:00 2021 +0300
+
+    little edits
+
+[33mcommit 17509671eb5cc77c09c6356f70032abff5bda328[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Aug 12 10:06:04 2021 +0300
+
+    Create download API
+
+[33mcommit a5b1aa1a7b4ead3f9bc73ffbe80a54bed97a8392[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Aug 10 16:30:48 2021 +0300
+
+    Create upload API
+
+[33mcommit 2d7d8186af4251a486f097685e2c4bbee4d73b1b[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Mon Aug 9 15:55:28 2021 +0300
+
+    Small edits
+
+[33mcommit 4c96bb23fe8a9a6c91bf9ddee0dceda9687bd77a[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Mon Aug 9 15:47:56 2021 +0300
+
+    Get latest the vote happened
+
+[33mcommit 49bbf42d8366b24cdd36529b1476ff529b24faf1[m[33m ([m[1;31morigin/registration[m[33m, [m[1;32mregistration[m[33m, [m[1;32mproduction[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Aug 5 14:16:26 2021 +0300
+
+    activate new users
+
+[33mcommit 2de5d3fecafa31167f204e3d1c3be28d42278767[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Aug 5 11:59:54 2021 +0300
+
+    install maildev. create mail serivce
+
+[33mcommit bd7aaa4a1add72f45d0fe4d2f1ea94e914c9d77c[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Wed Aug 4 17:30:27 2021 +0300
+
+    register new user without activiation + edit controllers paths
+
+[33mcommit a31539189a2c5f2956acca0bb0ce897608a77d18[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Wed Aug 4 09:28:38 2021 +0300
+
+    display user's name in the list instead of email
+
+[33mcommit c26d93eb9c4d01eac400d2bc7fddec44e45fc339[m[33m ([m[1;31morigin/service[m[33m, [m[1;32mservice[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Aug 3 15:57:04 2021 +0300
+
+    use @Transactional annotation
+
+[33mcommit 4dab63a8bfb5bf596d9bb6b45198fc00de123399[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Aug 3 15:06:46 2021 +0300
+
+    refactor controller methods to services
+
+[33mcommit 0a9786c10f82284969a14529302d6a91d344a4c3[m[33m ([m[1;31morigin/comments[m[33m, [m[1;32mcomments[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Aug 3 12:14:09 2021 +0300
+
+    add comments
+
+[33mcommit df6d8355c6af41b3219b5a996f180eaf6d38e59e[m[33m ([m[1;31morigin/voting[m[33m, [m[1;32mvoting[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Aug 3 09:42:28 2021 +0300
+
+    handled voting
+
+[33mcommit 577970832d9e650abfeeafb80ae05dd8cf2759b1[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Mon Aug 2 11:21:51 2021 +0300
+
+    make a vote controller
+
+[33mcommit 0f9e6a7712e1aeb6f2bcd229c948183f947f1cc4[m[33m ([m[1;31morigin/spring-security[m[33m, [m[1;32mspring-security[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Sun Aug 1 19:46:49 2021 +0300
+
+    finish the rest controllers
+
+[33mcommit 37c7d3eb734f5f4bb767a3918dbc32b7d1d19de8[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Sun Aug 1 16:16:10 2021 +0300
+
+    adding thymeleaf security to the main layout
+
+[33mcommit 67757eefee26ced7df30dffe39733d6710af1a3d[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Sun Aug 1 14:10:09 2021 +0300
+
+    make AuthController, login, logout & remember me configuration
+
+[33mcommit 2c9983fe1d2c0ee58ee078242ec7a210b277d531[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Jul 29 17:04:50 2021 +0300
+
+    secure: h2-console, submit, actuators. create AuditorAware class
+
+[33mcommit 1962181a20af4d67adc7b9a86f719af617277238[m[33m ([m[1;32mspring-mvc-view[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Wed Jul 28 11:12:04 2021 +0300
+
+    Making thw views
+
+[33mcommit 7373183e1a9d496fb5f96532099ca1b1b1f37d2d[m[33m ([m[1;31morigin/spring-mvc-controller[m[33m, [m[1;32mspring-mvc-controller[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Sun Jul 25 12:09:27 2021 +0300
+
+    creating LinkRepository & its CRUD methods
+
+[33mcommit a8b33dbc42800e202309edba16caf692d32d8308[m[33m ([m[1;31morigin/database[m[33m, [m[1;32mdatabase[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Jul 15 15:25:02 2021 +0300
+
+    Setup database
+
+[33mcommit 45b2da858bcdab300a6e5ec8427b3833640faac5[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Thu Jul 15 10:07:23 2021 +0300
+
+    Update 'application.properties' with h2 & hibernate info
+
+[33mcommit 6e525556e0e185d214d16bf750e200cf9f35afb8[m[33m ([m[1;31morigin/spring-mvc-model[m[33m, [m[1;32mspring-mvc-model[m[33m)[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Wed Jul 14 16:34:11 2021 +0300
+
+    Creating Auditable class
+
+[33mcommit 1ce286a030092a38e37e1d3bc3b43e52ad50d063[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Wed Jul 14 16:01:17 2021 +0300
+
+    Making relations
+
+[33mcommit 00a84aa53249712a6b15058c9bcbab689a2b602a[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Wed Jul 14 15:17:29 2021 +0300
+
+    Create Repositories for models
+
+[33mcommit 52be506f93c7762862ed730571efd3ca122dbcad[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Jul 13 16:40:12 2021 +0300
+
+    refactor methods & use Lombok dependency
+
+[33mcommit 2b67be2598809ca949ee6a666554ac0faed0ca1d[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Jul 13 16:16:56 2021 +0300
+
+    creating Entities
+
+[33mcommit b5a2cb57e424efbb675ed8bd4bdae4c5ac8a612e[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Tue Jul 13 15:50:32 2021 +0300
+
+    some changes
+
+[33mcommit b9e3d927bd6c3674db8e1609796731d359768fd3[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Mon Jul 12 16:55:13 2021 +0300
+
+    add branch
+
+[33mcommit 90abb9e43b30dd8059fbbd3cbd109cd3d867d824[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Mon Jul 12 16:43:48 2021 +0300
+
+    Adding README file
+
+[33mcommit 1efddc8a087f7a7662730041fbb46e9a8a2aeb7f[m
+Author: Sami Imran <samiimran2016@gmail.com>
+Date:   Mon Jul 12 15:29:43 2021 +0300
+
+    Initial commit
